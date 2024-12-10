@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/10 15:00:43 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/13 15:41:00 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/13 15:43:26 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include <unistd.h>
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
 
-void	print_list(t_list *lst);
-t_list	*create_list(char **argv);
-void	del(void *content);
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
+}

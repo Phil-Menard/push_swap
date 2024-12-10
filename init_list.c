@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/09 13:48:28 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/10 15:04:16 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,55 @@ void	print_list(t_list *lst)
 {
 	while (lst != NULL)
 	{
-		printf("content : %d\n", lst->content);
+		ft_printf("content : %d\n", *(int *)lst->content);
 		lst = lst->next;
 	}
 }
 
-t_list	*ft_lstnew(int n)
-{
-	t_list	*node;
-
-	node = malloc(sizeof(t_list));
-	if (node == NULL)
-		return (NULL);
-	node->content = n;
-	node->next = NULL;
-	return (node);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	check_doubles(t_list **lst, t_list *node)
 {
 	t_list	*current;
 
-	if (*lst == NULL)
-		*lst = new;
-	else
+	current = *lst;
+	while (current != NULL)
 	{
-		current = *lst;
-		while (current->next != NULL)
-			current = current->next;
-		current->next = new;
+		if (*(int *)node->content == *(int *)current->content)
+			return (1);
+		current = current->next;
 	}
+	return (0);
+}
+
+void	del(void *content)
+{
+	free(content);
+}
+
+t_list	*create_list(char **argv)
+{
+	t_list	*lst;
+	t_list	*new;
+	int		*content;
+	int		i;
+
+	content = malloc(sizeof(int));
+	if (!content)
+		return (NULL);
+	*content = ft_atoi(argv[1]);
+	lst = ft_lstnew((void *)content);
+	i = 2;
+	while (argv[i])
+	{
+		content = malloc(sizeof(int));
+		if (!content)
+			return (NULL);
+		*content = ft_atoi(argv[i]);
+		new = ft_lstnew((void *)content);
+		if (check_doubles(&lst, new) == 0)
+			ft_lstadd_back(&lst, new);
+		else
+			return (ft_lstclear(&new, &del), ft_lstclear(&lst, &del), NULL);
+		i++;
+	}
+	return (lst);
 }

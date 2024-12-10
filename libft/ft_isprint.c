@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/10 15:00:43 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/04 14:19:20 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/12 10:10:22 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-
-void	print_list(t_list *lst);
-t_list	*create_list(char **argv);
-void	del(void *content);
-
-#endif
+int	ft_isprint(int c)
+{
+	if (c >= ' ' && c <= 126)
+		return (c);
+	else
+		return (0);
+}

@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/10 15:00:43 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/15 11:21:13 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/15 11:21:14 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new->next = *lst;
+	*lst = new;
+}
 
-void	print_list(t_list *lst);
-t_list	*create_list(char **argv);
-void	del(void *content);
+/*
+#include <stdio.h>
 
-#endif
+int main(void)
+{
+	t_list  *head;
+	int     *a;
+
+	a = malloc(sizeof(int));
+	*a = 20;
+	head = ft_lstnew(a);
+	printf("valeur de content : %d\n", *(int *)head->content);
+	printf("adresse de next : %p\n", (void *)head->next);
+
+
+	return (0);
+}
+*/

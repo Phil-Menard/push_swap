@@ -1,25 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/10 15:00:43 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/13 14:49:10 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/13 15:22:59 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	i;
+	char			*ptr;
 
-void	print_list(t_list *lst);
-t_list	*create_list(char **argv);
-void	del(void *content);
+	ptr = s;
+	i = 0;
+	while (s[i])
+	{
+		f(i, ptr);
+		ptr++;
+		i++;
+	}
+}
 
-#endif
+/*
+#include <stdio.h>
+
+void	u(unsigned int i, char *c)
+{
+	i = 0;
+	if (c[i] >= 'a' && c[i] <= 'z')
+		c[i] -= 32;
+}
+
+int	main(void)
+{
+	char	str[] = "hello";
+	
+	ft_striteri(str, &u);
+	printf("%s\n", str);
+
+	return (0);
+}
+*/

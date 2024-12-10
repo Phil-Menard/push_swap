@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/10 15:00:43 by pmenard          ###   ########.fr       */
+/*   Created: 2024/11/04 16:29:28 by pmenard           #+#    #+#             */
+/*   Updated: 2024/11/12 10:12:48 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
+}
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
+/*
+#include <stdio.h>
+#include <ctype.h>
 
-void	print_list(t_list *lst);
-t_list	*create_list(char **argv);
-void	del(void *content);
+int	main(void)
+{
+	char	src[] = "voila";
+	int		i;
 
-#endif
+	printf("Avant toupper : %s\n", src);
+	i = 0;
+	while (src[i])
+	{
+		src[i] = ft_toupper(src[i]);
+		i++;
+	}
+	printf("Apres toupper : %s\n", src);
+	return (0);
+}
+*/
