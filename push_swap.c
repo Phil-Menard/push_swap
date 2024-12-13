@@ -6,12 +6,11 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 16:31:23 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:34:08 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 /* void	tri(t_list **a, t_list **b)
 {
@@ -34,6 +33,20 @@
 	print_list(*a, "a");
 	print_list(*b, "b");
 } */
+
+int	is_sorted(t_list **a)
+{
+	t_list	*current;
+
+	current = *a;
+	while (current->next != NULL)
+	{
+		if (*(int *)current->content > *(int *)current->next->content)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}
 
 void	sort_three(t_list **a, t_list **b)
 {
@@ -82,15 +95,16 @@ int	main(int argc, char **argv)
 
 	b = NULL;
 	if (argc == 1)
-		return (printf("Error\n"), (1));
+		return (ft_printf("Error\n"), (1));
 	else
 	{
-		if (verify_params(argv) == 1)
-			return (printf("Error\n"), (1));
+		if (!verify_params(argv))
+			return (ft_printf("Error\n"), (1));
 		a = create_list(argv);
 		if (a == NULL)
-			return (printf("Error\n"), (1));
-		sort_four(&a, &b);
+			return (ft_printf("Error\n"), (1));
+		if (!is_sorted(&a))
+			sort_four(&a, &b);
 		print_list(a, "a");
 		ft_lstclear(&a, &del);
 		ft_lstclear(&b, &del);

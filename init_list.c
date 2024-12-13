@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 11:51:08 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:32:40 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	verify_params(char **argv)
 		value = ft_atoi(argv[i]);
 		content = ft_itoa(value);
 		if (ft_strncmp(argv[i], content, ft_strlen(argv[i])) != 0)
-			return (free(content), (1));
+			return (free(content), (0));
 		free(content);
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	check_doubles(t_list **lst, t_list *node)
@@ -51,10 +51,10 @@ int	check_doubles(t_list **lst, t_list *node)
 	while (current != NULL)
 	{
 		if (*(int *)node->content == *(int *)current->content)
-			return (1);
+			return (0);
 		current = current->next;
 	}
-	return (0);
+	return (1);
 }
 
 void	del(void *content)
@@ -82,7 +82,7 @@ t_list	*create_list(char **argv)
 			return (NULL);
 		*content = ft_atoi(argv[i]);
 		new = ft_lstnew((void *)content);
-		if (check_doubles(&lst, new) == 0)
+		if (check_doubles(&lst, new))
 			ft_lstadd_back(&lst, new);
 		else
 			return (ft_lstclear(&new, &del), ft_lstclear(&lst, &del), NULL);
