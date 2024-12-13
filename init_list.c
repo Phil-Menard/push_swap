@@ -6,20 +6,22 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/12 15:21:15 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/13 10:57:41 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-void	print_list(t_list *lst)
+void	print_list(t_list *lst, const char *lstname)
 {
+	ft_printf("%s : ", lstname);
 	while (lst != NULL)
 	{
-		ft_printf("%d\n", *(int *)lst->content);
+		ft_printf("%d ", *(int *)lst->content);
 		lst = lst->next;
 	}
+	ft_printf("\n");
 }
 
 int	check_doubles(t_list **lst, t_list *node)

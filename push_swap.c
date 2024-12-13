@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/12 16:20:37 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/13 11:07:52 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,16 @@ int	main(int argc, char **argv)
 		a = create_list(argv);
 		if (a == NULL)
 			return (printf("Error\n"), (1));
-		print_list(a);
-		/* a = ft_swap(a);
-		printf("\n");
-		print_list(a); */
+		print_list(a, "a");
+		a = ft_swap(a);
+		print_list(a, "a");
 		a = ft_push(a, &b);
-		printf("a : \n");
-		print_list(a);
-		printf("b : \n");
-		print_list(b);
+		print_list(a, "a");
+		print_list(b, "b");
+		a = ft_rotate(&a, a);
+		print_list(a, "a");
+		a = ft_reverse(&a, a);
+		print_list(a, "a");
 		ft_lstclear(&a, &del);
 		ft_lstclear(&b, &del);
 	}
