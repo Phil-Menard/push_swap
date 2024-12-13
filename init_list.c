@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 10:57:41 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/13 11:51:08 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ void	print_list(t_list *lst, const char *lstname)
 		lst = lst->next;
 	}
 	ft_printf("\n");
+}
+
+int	verify_params(char **argv)
+{
+	int		i;
+	int		value;
+	char	*content;
+
+	i = 1;
+	while (argv[i])
+	{
+		value = ft_atoi(argv[i]);
+		content = ft_itoa(value);
+		if (ft_strncmp(argv[i], content, ft_strlen(argv[i])) != 0)
+			return (free(content), (1));
+		free(content);
+		i++;
+	}
+	return (0);
 }
 
 int	check_doubles(t_list **lst, t_list *node)

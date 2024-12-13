@@ -6,13 +6,13 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:08:10 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 11:08:11 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/13 15:02:21 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_swap(t_list *lst)
+t_list	*ft_swap(t_list *lst, const char *lstname)
 {
 	t_list	*first;
 	t_list	*second;
@@ -23,10 +23,11 @@ t_list	*ft_swap(t_list *lst)
 	second = lst->next;
 	first->next = second->next;
 	second->next = first;
+	ft_printf("s%s\n", lstname);
 	return (second);
 }
 
-t_list	*ft_push(t_list *a, t_list **b)
+t_list	*ft_push(t_list *a, t_list **b, const char *lstname)
 {
 	t_list	*second;
 
@@ -34,10 +35,11 @@ t_list	*ft_push(t_list *a, t_list **b)
 		return (NULL);
 	second = a->next;
 	ft_lstadd_front(b, a);
+	ft_printf("p%s\n", lstname);
 	return (second);
 }
 
-t_list	*ft_rotate(t_list **lst, t_list *node)
+t_list	*ft_rotate(t_list **lst, t_list *node, const char *lstname)
 {
 	t_list	*second;
 
@@ -46,10 +48,11 @@ t_list	*ft_rotate(t_list **lst, t_list *node)
 	second = node->next;
 	ft_lstadd_back(lst, node);
 	node->next = NULL;
+	ft_printf("r%s\n", lstname);
 	return (second);
 }
 
-t_list	*ft_reverse(t_list **lst, t_list *node)
+t_list	*ft_reverse(t_list **lst, t_list *node, const char *lstname)
 {
 	t_list	*last;
 
@@ -62,5 +65,6 @@ t_list	*ft_reverse(t_list **lst, t_list *node)
 		node = node->next;
 	node->next = NULL;
 	ft_lstadd_front(lst, last);
+	ft_printf("rr%s\n", lstname);
 	return (last);
 }
