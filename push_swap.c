@@ -6,49 +6,13 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 17:34:08 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/16 16:20:14 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* void	tri(t_list **a, t_list **b)
-{
-	print_list(*a, "a");
-	print_list(*b, "b");
-	*a = ft_swap(*a);
-	print_list(*a, "a");
-	print_list(*b, "b");
-	*a = ft_push(*a, b);
-	*a = ft_push(*a, b);
-	*a = ft_push(*a, b);
-	print_list(*a, "a");
-	print_list(*b, "b");
-	*a = ft_swap(*a);
-	print_list(*a, "a");
-	print_list(*b, "b");
-	*b = ft_push(*b, a);
-	*b = ft_push(*b, a);
-	*b = ft_push(*b, a);
-	print_list(*a, "a");
-	print_list(*b, "b");
-} */
-
-int	is_sorted(t_list **a)
-{
-	t_list	*current;
-
-	current = *a;
-	while (current->next != NULL)
-	{
-		if (*(int *)current->content > *(int *)current->next->content)
-			return (0);
-		current = current->next;
-	}
-	return (1);
-}
-
-void	sort_three(t_list **a, t_list **b)
+/* void	sort_three(t_list **a, t_list **b)
 {
 	t_list	*a_first;
 
@@ -86,6 +50,75 @@ void	sort_four(t_list **a, t_list **b)
 	}
 	else if (*(int *)a_first->content > *(int *)a_last->content)
 		*a = ft_rotate(a, *a, "a");
+} */
+
+int	is_sorted(t_list **a)
+{
+	t_list	*current;
+
+	current = *a;
+	while (current->next != NULL)
+	{
+		if (*(int *)current->content > *(int *)current->next->content)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}
+
+int	is_in_tab(int *tab, int value, int i)
+{
+	while (i >= 0)
+	{
+		if (value == tab[i])
+			return (0);
+		i--;
+	}
+	return (1);
+}
+
+int	*fill_tab(t_list **a, int *tab, int tab_size)
+{
+	t_list	*current;
+	int		i;
+
+	i = 0;
+	while (i < tab_size)
+	{
+		current = *a;
+		tab[i] = -1;
+		while (is_in_tab(tab, *(int *)current->content, i) == 0)
+			current = current->next;
+		tab[i] = *(int *)current->content;
+		while (current != NULL)
+		{
+			if (*(int *)current->content < tab[i]
+				&& is_in_tab(tab, *(int *)current->content, i) == 1)
+				tab[i] = *(int *)current->content;
+			current = current->next;
+		}
+		ft_printf("tab[%d] : %d\n", i, tab[i]);
+		i++;
+	}
+	return (tab);
+}
+
+t_list	*sort_fourty_max(t_list **a)
+{
+	int	*tab;
+	int	tab_size;
+
+	if (ft_lstsize(*a) % 2 == 0)
+		tab_size = ft_lstsize(*a) / 2;
+	else
+		tab_size = (ft_lstsize(*a) / 2) + 1;
+	tab = malloc((tab_size + 1) * sizeof(int));
+	if (!tab)
+		return (NULL);
+	tab[tab_size] = -1;
+	tab = fill_tab(a, tab, tab_size);
+	free(tab);
+	return (*a);
 }
 
 int	main(int argc, char **argv)
@@ -104,7 +137,7 @@ int	main(int argc, char **argv)
 		if (a == NULL)
 			return (ft_printf("Error\n"), (1));
 		if (!is_sorted(&a))
-			sort_four(&a, &b);
+			a = sort_fourty_max(&a);
 		print_list(a, "a");
 		ft_lstclear(&a, &del);
 		ft_lstclear(&b, &del);
