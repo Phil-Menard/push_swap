@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/17 12:45:54 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:18:54 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,28 @@ int	is_sorted(t_list **a)
 
 t_list	*sort_fourty_max(t_list **a, t_list **b)
 {
-	int	*tab;
-	int	tab_size;
+	int		*tab;
+	int		tab_size;
+	t_list	*current;
 
 	tab_size = get_tabsize(a);
 	tab = malloc((tab_size + 1) * sizeof(int));
 	if (!tab)
 		return (NULL);
 	tab[tab_size] = -1;
-	tab = fill_tab(a, tab, tab_size);
-	from_tab_tb(a, b, tab);
+	while (tab_size > 2)
+	{
+		tab_size = get_tabsize(a);
+		tab = fill_tab(a, tab, tab_size);
+		from_tab_tb(a, b, tab);
+	}
 	free(tab);
+	current = *a;
+	if (get_tabsize(a) > 1
+		&& *(int *)current->content > *(int *)current->next->content)
+		*a = ft_swap(*a, "a");
+	while (ft_lstsize(*b) > 0)
+		*b = ft_push(*b, a, "b");
 	return (*a);
 }
 

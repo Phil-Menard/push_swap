@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/17 12:43:58 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/17 15:03:28 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	*fill_tab(t_list **a, int *tab, int tab_size)
 				tab[i] = *(int *)current->content;
 			current = current->next;
 		}
-		ft_printf("tab[%d] : %d\n", i, tab[i]);
 		i++;
 	}
 	return (tab);
