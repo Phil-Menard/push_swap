@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fourty.c                                           :+:      :+:    :+:   */
+/*   array_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/17 15:03:28 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:23:38 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,39 +59,18 @@ int	get_tabsize(t_list **a)
 	return (tab_size);
 }
 
-void	conditions_tab(int lst_index, t_list **a, t_list **b)
-{
-	if (lst_index <= get_tabsize(a))
-	{
-		while (lst_index >= 0)
-		{
-			if (lst_index == 0)
-				*a = ft_push(*a, b, "b");
-			else
-				*a = ft_rotate(a, *a, "a");
-			lst_index--;
-		}
-	}
-	else
-	{
-		while (lst_index < ft_lstsize(*a))
-		{
-			*a = ft_reverse(a, *a, "a");
-			lst_index++;
-		}
-		*a = ft_push(*a, b, "b");
-	}
-}
-
 void	from_tab_tb(t_list **a, t_list **b, int *tab)
 {
 	t_list	*current;
 	int		i;
 	int		lst_index;
 	int		tab_size;
+	int		*tab_count;
 
 	i = 0;
 	tab_size = get_tabsize(a);
+	tab_count = malloc((tab_size + 1) * sizeof(int));
+	tab_count[tab_size] = -1;
 	while (i < tab_size)
 	{
 		current = *a;
@@ -101,7 +80,10 @@ void	from_tab_tb(t_list **a, t_list **b, int *tab)
 			current = current->next;
 			lst_index++;
 		}
-		conditions_tab(lst_index, a, b);
+		tab_count[i] = count_instructions(lst_index, a);
+		ft_printf("tab_count : %d\n", tab_count[i]);
 		i++;
 	}
+	find_best_way(tab_count, a, b);
+	free(tab_count);
 }

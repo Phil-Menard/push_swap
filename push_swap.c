@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/17 14:18:54 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:05:17 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	is_sorted(t_list **a)
 	return (1);
 }
 
-t_list	*sort_fourty_max(t_list **a, t_list **b)
+t_list	*push_swap(t_list **a, t_list **b)
 {
 	int		*tab;
 	int		tab_size;
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 		if (a == NULL)
 			return (ft_printf("Error\n"), (1));
 		if (!is_sorted(&a))
-			a = sort_fourty_max(&a, &b);
+			a = push_swap(&a, &b);
 		print_list(a, "a");
 		print_list(b, "b");
 		ft_lstclear(&a, &del);
