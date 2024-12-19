@@ -1,5 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
+DEBUG_FLAGS = -g
 NAME = push_swap
 SRC = push_swap.c \
 	init_list.c \
@@ -31,7 +32,7 @@ $(FT_PRINTF):
 
 # Compilation des fichiers objets
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(LIBFT_PATH) -I$(FT_PRINTF_PATH) -c $< -o $@
+	$(CC) $(CFLAGS) $(DEBUG_FLAGS) -I$(LIBFT_PATH) -I$(FT_PRINTF_PATH) -c $< -o $@
 
 # Nettoyage des fichiers objets
 clean:

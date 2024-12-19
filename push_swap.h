@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/18 15:18:42 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/19 15:42:49 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_reverse(t_list **lst, t_list *node, const char *lstname);
 int		get_tabsize(t_list **a);
 int		*fill_tab(t_list **a, int *tab, int tab_size);
 void	from_tab_tb(t_list **a, t_list **b, int *tab);
-void	find_best_way(int *tab_count, t_list **a, t_list **b);
+void	algo(int *tab_count, int *tab, t_list **a, t_list **b);
 int		count_instructions(int lst_index, t_list **a);
 int		verify_params(char **argv);
 void	del(void *content);

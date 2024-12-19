@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/18 15:23:38 by pmenard          ###   ########.fr       */
+/*   Updated: 2024/12/19 15:42:57 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	from_tab_tb(t_list **a, t_list **b, int *tab)
 	i = 0;
 	tab_size = get_tabsize(a);
 	tab_count = malloc((tab_size + 1) * sizeof(int));
-	tab_count[tab_size] = -1;
 	while (i < tab_size)
 	{
 		current = *a;
@@ -81,9 +80,8 @@ void	from_tab_tb(t_list **a, t_list **b, int *tab)
 			lst_index++;
 		}
 		tab_count[i] = count_instructions(lst_index, a);
-		ft_printf("tab_count : %d\n", tab_count[i]);
 		i++;
 	}
-	find_best_way(tab_count, a, b);
+	algo(tab_count, tab, a, b);
 	free(tab_count);
 }
