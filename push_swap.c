@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/18 14:05:17 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/03 18:50:30 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_list	*push_swap(t_list **a, t_list **b)
 	{
 		tab_size = get_tabsize(a);
 		tab = fill_tab(a, tab, tab_size);
-		from_tab_tb(a, b, tab);
+		push_chunk_to_b(a, tab);
 	}
 	free(tab);
 	current = *a;
