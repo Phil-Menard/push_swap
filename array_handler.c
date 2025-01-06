@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/06 12:28:09 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/06 16:46:27 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,13 @@ int	get_tabsize(t_list **a)
 	return (tab_size);
 }
 
-void	push_chunk_to_b(t_list **a, int *tab)
+void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
+{
+	(void)b;
+	tab = optimise_tab(a, tab);
+}
+
+/* void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
 {
 	t_list	*current;
 	int		i;
@@ -88,4 +94,4 @@ void	push_chunk_to_b(t_list **a, int *tab)
 	}
 	//algo(tab_count, tab, a, b);
 	free(tab_count);
-}
+} */

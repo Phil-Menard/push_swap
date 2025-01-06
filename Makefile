@@ -6,7 +6,7 @@ SRC = push_swap.c \
 	init_list.c \
 	instructions.c \
 	array_handler.c \
-	algo.c
+	optimisation.c
 
 OBJ = $(SRC:.c=.o)
 

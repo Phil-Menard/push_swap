@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/06 12:39:17 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/06 16:55:41 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_list	*push_swap(t_list **a, t_list **b)
 	int		*tab;
 	int		tab_size;
 	int		chunk_quantity;
-	t_list	*current;
+	int		i;
 
 	tab_size = get_tabsize(a);
 	tab = malloc((tab_size + 1) * sizeof(int));
@@ -60,19 +60,22 @@ t_list	*push_swap(t_list **a, t_list **b)
 		return (NULL);
 	tab[tab_size] = -1;
 	chunk_quantity = find_chunk_quantity(a);
-	while (chunk_quantity > 1) //2 pour gerer les deux chunks en meme temps?
+	i = 1;
+	while (i > 0) //2 pour gerer les deux chunks en meme temps?
 	{
 		tab_size = get_tabsize(a);
 		tab = fill_tab(a, tab, tab_size);
 		if (chunk_quantity > 2) //ne pas push dernier chunk dans b
-			push_chunk_to_b(a, tab); //on recupere seulement tableau
+			push_chunk_to_b(a, b, tab); //on recupere seulement tableau
+		i--;
 	}
+	free(tab);
 	//free(tab); -> ne pas free maintenant, le dernier chumk devrait etre la
 	// changer ce qui suit car on a deux chunk dans a!
 	//on va push tab dans b, et trier les deux chunks de a et b en meme temps
 	//sort_a_and_b
-	while (ft_lstsize(*b) > 0)
-		*b = ft_push(*b, a, "b");
+	/* while (ft_lstsize(*b) > 0)
+		*b = ft_push(*b, a, "b"); */
 	return (*a);
 }
 
