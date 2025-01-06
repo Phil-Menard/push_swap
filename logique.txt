@@ -17,6 +17,16 @@ Si doublons ou arguments non int, return "Error".
 Validation minimaliste : 100 nombres aleatoires en moins de 700 operations.
 Validation optimale : 	 500 nombres aleatoires en moins de 5500 operations.
 
+idees :
+	- savoir en avance combien de chunks on aura
+	- adapter le nombre de chunks en fonctions de la taille de a
+	- quand dernier chunk dans a, utiliser des rr/rrr pour optimiser des coups
+	- en dessous de :
+		- 50 -> 4 chunks?
+		- 100 -> 5 chunks?
+		- 300 -> 8 chunks?
+		- 500 -> 10 chunks?
+
 Init a and b
 a : 2 1 3 6 5 8
 b : 

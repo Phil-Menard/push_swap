@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/03 18:52:12 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/06 12:28:09 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int	*fill_tab(t_list **a, int *tab, int tab_size)
 	while (i < tab_size)
 	{
 		current = *a;
+		//prend un element qui n'est pas dans tab
 		tab[i] = -1;
 		while (is_in_tab(tab, *(int *)current->content, i) == 0)
 			current = current->next;
 		tab[i] = *(int *)current->content;
+		//trouver + petit element qui n'est pas dans tab
 		while (current != NULL)
 		{
 			if (*(int *)current->content < tab[i]

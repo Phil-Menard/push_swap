@@ -6,51 +6,11 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/03 18:50:30 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/06 12:39:17 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* void	sort_three(t_list **a, t_list **b)
-{
-	t_list	*a_first;
-
-	*a = ft_push(*a, b, "b");
-	a_first = *a;
-	if (*(int *)a_first->content > *(int *)a_first->next->content)
-		*a = ft_swap(*a, "a");
-	*b = ft_push(*b, a, "a");
-	a_first = *a;
-	if (*(int *)a_first->content > *(int *)a_first->next->content)
-	{
-		if (*(int *)a_first->content > *(int *)a_first->next->next->content)
-			*a = ft_rotate(a, *a, "a");
-		else
-			*a = ft_swap(*a, "a");
-	}
-}
-
-void	sort_four(t_list **a, t_list **b)
-{
-	t_list	*a_first;
-	t_list	*a_last;
-
-	*a = ft_push(*a, b, "b");
-	sort_three(a, b);
-	*b = ft_push(*b, a, "b");
-	a_last = *a;
-	while (a_last->next != NULL)
-		a_last = a_last->next;
-	a_first = *a;
-	if (*(int *)a_first->content > *(int *)a_first->next->content)
-	{
-		*a = ft_swap(*a, "a");
-		sort_four(a, b);
-	}
-	else if (*(int *)a_first->content > *(int *)a_last->content)
-		*a = ft_rotate(a, *a, "a");
-} */
 
 int	is_sorted(t_list **a)
 {
@@ -66,10 +26,32 @@ int	is_sorted(t_list **a)
 	return (1);
 }
 
+int	find_chunk_quantity(t_list **a)
+{
+	int	size;
+
+	size = ft_lstsize(*a);
+	if (size <= 50)
+		return (4);
+	else if (size <= 100)
+		return (5);
+	else if (size <= 200)
+		return (6);
+	else if (size <= 300)
+		return (7);
+	else if (size <= 400)
+		return (8);
+	else if (size <= 450)
+		return (9);
+	else
+		return (10);
+}
+
 t_list	*push_swap(t_list **a, t_list **b)
 {
 	int		*tab;
 	int		tab_size;
+	int		chunk_quantity;
 	t_list	*current;
 
 	tab_size = get_tabsize(a);
@@ -77,17 +59,18 @@ t_list	*push_swap(t_list **a, t_list **b)
 	if (!tab)
 		return (NULL);
 	tab[tab_size] = -1;
-	while (tab_size > 2)
+	chunk_quantity = find_chunk_quantity(a);
+	while (chunk_quantity > 1) //2 pour gerer les deux chunks en meme temps?
 	{
 		tab_size = get_tabsize(a);
 		tab = fill_tab(a, tab, tab_size);
-		push_chunk_to_b(a, tab);
+		if (chunk_quantity > 2) //ne pas push dernier chunk dans b
+			push_chunk_to_b(a, tab); //on recupere seulement tableau
 	}
-	free(tab);
-	current = *a;
-	if (get_tabsize(a) > 1
-		&& *(int *)current->content > *(int *)current->next->content)
-		*a = ft_swap(*a, "a");
+	//free(tab); -> ne pas free maintenant, le dernier chumk devrait etre la
+	// changer ce qui suit car on a deux chunk dans a!
+	//on va push tab dans b, et trier les deux chunks de a et b en meme temps
+	//sort_a_and_b
 	while (ft_lstsize(*b) > 0)
 		*b = ft_push(*b, a, "b");
 	return (*a);
