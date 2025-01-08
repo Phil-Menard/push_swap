@@ -8,7 +8,7 @@ exemple : push a => premier element va sur pile b. Si a vide, fait rien.
 	ra|rb (rotate a|b) : decale d'une position vers le haut tous les elements de
 la pile. Le premier element devient le dernier.
 	rr : ra et rb en meme temps.
-	rra|rrb (reverse rotate a|b) : decale d'une position vers le vas tous les
+	rra|rrb (reverse rotate a|b) : decale d'une position vers le bas tous les
 elements de la pile. Le dernier element devient le premier.
 	rrr : rra et rrb en meme temps.
 

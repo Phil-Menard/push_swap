@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/08 15:43:00 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/08 16:38:29 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,16 @@ int	get_tabsize(int *tab)
 	return (i);
 }
 
-void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
+int	*swap_tab(int *tab, int element)
 {
-	(void)b;
-	ft_printf("element : %d\n", find_element_to_push(a, tab));
+	int	i;
+	int	tab_size;
+
+	i = 0;
+	while (tab[i] != element)
+		i++;
+	tab_size = get_tabsize(tab) - 1;
+	tab[i] = tab[tab_size];
+	tab[tab_size] = -1;
+	return (tab);
 }

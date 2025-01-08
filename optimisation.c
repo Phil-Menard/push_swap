@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:02:23 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/08 15:43:23 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/08 16:43:17 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,16 @@ int	find_element_to_push(t_list **a, int *tab)
 	nb_instructions = malloc((tabsize + 1) * sizeof(int));
 	i = -1;
 	while (++i < tabsize)
-	{
-		ft_printf("tab[i] :      %d\n", tab[i]);
 		nb_instructions[i] = get_lstindex(a, tab[i]);
-		ft_printf("nb_instructions[i] : %d\n", nb_instructions[i]);
-	}
 	element = get_lowest_element(a, tabsize, nb_instructions);
+	i = 0;
+	while (element != nb_instructions[i])
+		i++;
+	tab = swap_tab(tab, tab[i]);
+	i = 0;
+	tabsize = get_tabsize(tab);
+	while (i < tabsize)
+		i++;
 	free(nb_instructions);
 	return (element);
 }
