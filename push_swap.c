@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/06 16:55:41 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/08 15:15:26 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_list	*push_swap(t_list **a, t_list **b)
 	int		chunk_quantity;
 	int		i;
 
-	tab_size = get_tabsize(a);
+	tab_size = find_tabsize(a);
 	tab = malloc((tab_size + 1) * sizeof(int));
 	if (!tab)
 		return (NULL);
@@ -63,7 +63,7 @@ t_list	*push_swap(t_list **a, t_list **b)
 	i = 1;
 	while (i > 0) //2 pour gerer les deux chunks en meme temps?
 	{
-		tab_size = get_tabsize(a);
+		tab_size = find_tabsize(a);
 		tab = fill_tab(a, tab, tab_size);
 		if (chunk_quantity > 2) //ne pas push dernier chunk dans b
 			push_chunk_to_b(a, b, tab); //on recupere seulement tableau

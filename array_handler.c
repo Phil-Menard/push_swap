@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/06 16:46:27 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/08 15:43:00 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	*fill_tab(t_list **a, int *tab, int tab_size)
 	return (tab);
 }
 
-int	get_tabsize(t_list **a)
+int	find_tabsize(t_list **a)
 {
 	int	tab_size;
 	int	lst_size;
@@ -63,35 +63,18 @@ int	get_tabsize(t_list **a)
 	return (tab_size);
 }
 
+int	get_tabsize(int *tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i] != -1)
+		i++;
+	return (i);
+}
+
 void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
 {
 	(void)b;
-	tab = optimise_tab(a, tab);
+	ft_printf("element : %d\n", find_element_to_push(a, tab));
 }
-
-/* void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
-{
-	t_list	*current;
-	int		i;
-	int		lst_index;
-	int		tab_size;
-	int		*tab_count;
-
-	i = 0;
-	tab_size = get_tabsize(a);
-	tab_count = malloc((tab_size + 1) * sizeof(int));
-	while (i < tab_size)
-	{
-		current = *a;
-		lst_index = 0;
-		while (*(int *)current->content != tab[i])
-		{
-			current = current->next;
-			lst_index++;
-		}
-		tab_count[i] = count_instructions(lst_index, a);
-		i++;
-	}
-	//algo(tab_count, tab, a, b);
-	free(tab_count);
-} */
