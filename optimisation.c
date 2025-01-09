@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:02:23 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/08 16:58:44 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/09 11:10:01 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int	get_lstindex(t_list **a, int index_tab)
 {
 	int		lst_index;
-	int		lst_size;
 	t_list	*current;
 
 	lst_index = 0;
 	current = *a;
-	lst_size = ft_lstsize(*a);
 	while (*(int *)current->content != index_tab)
 	{
 		current = current->next;

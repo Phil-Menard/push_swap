@@ -22,30 +22,32 @@ all: $(NAME)
 
 # Construction de l'exécutable en respectant les dépendances
 $(NAME): $(OBJ) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+	@echo "Compiling libraries..."
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(FT_PRINTF) -o $(NAME)
+	@echo "libraries compiled successfully!"
 
 # Compilation des bibliothèques externes
 $(LIBFT):
-	make -C $(LIBFT_PATH) bonus
+	@make -s -C $(LIBFT_PATH) bonus
 
 $(FT_PRINTF):
-	make -C $(FT_PRINTF_PATH)
+	@make -s -C $(FT_PRINTF_PATH)
 
 # Compilation des fichiers objets
 %.o: %.c
-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) -I$(LIBFT_PATH) -I$(FT_PRINTF_PATH) -c $< -o $@
+	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) -I$(LIBFT_PATH) -I$(FT_PRINTF_PATH) -c $< -o $@
 
 # Nettoyage des fichiers objets
 clean:
-	rm -f $(OBJ)
-	make -C $(LIBFT_PATH) clean
-	make -C $(FT_PRINTF_PATH) clean
+	@rm -f $(OBJ)
+	@make -s -C $(LIBFT_PATH) clean
+	@make -s -C $(FT_PRINTF_PATH) clean
 
 # Nettoyage complet
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_PATH) fclean
-	make -C $(FT_PRINTF_PATH) fclean
+	@rm -f $(NAME)
+	@make -s -C $(LIBFT_PATH) fclean
+	@make -s -C $(FT_PRINTF_PATH) fclean
 
 # Rebuild complet
 re: fclean all
