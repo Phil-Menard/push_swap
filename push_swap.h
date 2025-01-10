@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 14:26:09 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:59:39 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_list	*ft_swap(t_list *lst, const char *lstname);
 t_list	*ft_push(t_list *a, t_list **b, const char *lstname);
 t_list	*ft_rotate(t_list **lst, t_list *a, const char *lstname);
 t_list	*ft_reverse(t_list **lst, t_list *node, const char *lstname);
-int		find_tabsize(t_list **a);
+int		find_chunk_quantity(t_list **a);
+int		*set_chunk_quantity(t_list **a, int chunk_quantity);
 int		get_tabsize(int *tab);
 int		*swap_tab(int *tab, int element);
 int		*fill_tab(t_list **a, int *tab, int tab_size);

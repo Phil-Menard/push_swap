@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 13:56:03 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:58:00 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,6 @@ int	*fill_tab(t_list **a, int *tab, int tab_size)
 		i++;
 	}
 	return (tab);
-}
-
-int	find_tabsize(t_list **a)
-{
-	int	tab_size;
-	int	lst_size;
-
-	lst_size = ft_lstsize(*a);
-	if (lst_size % 2 == 0)
-		tab_size = lst_size / 2;
-	else
-		tab_size = (lst_size / 2) + 1;
-	return (tab_size);
 }
 
 int	get_tabsize(int *tab)

@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 17:37:16 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:59:05 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,49 +26,28 @@ int	is_sorted(t_list **a)
 	return (1);
 }
 
-int	find_chunk_quantity(t_list **a)
-{
-	int	size;
-
-	size = ft_lstsize(*a);
-	if (size <= 20)
-		return (2);
-	else if (size <= 50)
-		return (4);
-	else if (size <= 100)
-		return (5);
-	else if (size <= 200)
-		return (6);
-	else if (size <= 300)
-		return (7);
-	else if (size <= 400)
-		return (8);
-	else if (size <= 450)
-		return (9);
-	else
-		return (10);
-}
-
 t_list	*push_swap(t_list **a, t_list **b)
 {
-	int		*tab;
-	int		tab_size;
-	int		chunk_quantity;
+	int	i;
+	int	*tab;
+	int	*tabs_size;
+	int	chunk_quantity;
 
 	chunk_quantity = find_chunk_quantity(a);
-	tab_size = find_tabsize(a);
-	tab = malloc((tab_size + 1) * sizeof(int));
-	if (!tab)
-		return (NULL);
-	tab[tab_size] = -1;
+	tabs_size = set_chunk_quantity(a, chunk_quantity);
+	i = 0;
 	while (chunk_quantity > 1)
 	{
-		tab_size = find_tabsize(a);
-		tab = fill_tab(a, tab, tab_size);
+		tab = malloc((tabs_size[i] + 1) * sizeof(int));
+		tab[tabs_size[i]] = -1;
+		tab = fill_tab(a, tab, tabs_size[i]);
 		push_chunk_to_b(a, b, tab);
 		chunk_quantity--;
+		i++;
+		free(tab);
 	}
-	free(tab);
+	free(tabs_size);
+	//sort_a(a);
 	sort_b(b);
 	while (ft_lstsize(*b) > 0)
 		*b = ft_push(*b, a, "b");
