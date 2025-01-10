@@ -7,7 +7,8 @@ SRC = push_swap.c \
 	instructions.c \
 	array_handler.c \
 	optimisation.c \
-	algorithm.c
+	algorithm.c \
+	find_in_list.c
 
 OBJ = $(SRC:.c=.o)
 
