@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:24:44 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 16:42:47 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:18:24 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	change_order_in_b(t_list **b, int position)
 
 void	sort_b(t_list **b)
 {
-	t_list *current;
+	t_list	*current;
 	int		bigger;
 	int		index;
 
