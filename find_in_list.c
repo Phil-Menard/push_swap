@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:30:56 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 13:55:48 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/10 16:41:24 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,33 @@
 int	get_bigger_element(t_list **b)
 {
 	t_list	*current;
-	int		content;
+	int		biggest;
 
 	current = *b;
-	content = *(int *)current->content;
-	while (current->next)
+	biggest = *(int *)current->content;
+	while (current)
 	{
-		if (*(int *)current->content > content)
-			content = *(int *)current->content;
+		if (*(int *)current->content > biggest)
+			biggest = *(int *)current->content;
 		current = current->next;
 	}
-	return (content);
+	return (biggest);
 }
 
 int	get_smallest_element(t_list **b)
 {
 	t_list	*current;
-	int		content;
+	int		lowest;
 
 	current = *b;
-	content = *(int *)current->content;
-	while (current->next)
+	lowest = *(int *)current->content;
+	while (current)
 	{
-		if (*(int *)current->content < content)
-			content = *(int *)current->content;
+		if (*(int *)current->content < lowest)
+			lowest = *(int *)current->content;
 		current = current->next;
 	}
-	return (content);
+	return (lowest);
 }
 
 int	set_position(t_list **b, t_list *element, int lowest, int bigger)
