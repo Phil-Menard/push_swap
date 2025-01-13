@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 13:40:29 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 14:57:02 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ int	main(int argc, char **argv)
 	{
 		arg = handle_args(argc, argv);
 		if (!verify_params(arg))
-			return (ft_printf("Error\n"), (1));
+			return (free_arg(arg), ft_printf("Error\n"), (1));
 		a = create_list(arg);
 		if (a == NULL)
-			return (ft_printf("Error\n"), (1));
+			return (free_arg(arg), ft_printf("Error\n"), (1));
+		free_arg(arg);
 		if (!is_sorted(&a))
 			push_swap(&a, &b);
 		/* print_list(a, "a");

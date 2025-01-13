@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:03:06 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 11:58:29 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 14:49:00 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	verify_params(char **argv)
 	int		value;
 	char	*content;
 
-	i = 1;
+	i = 0;
 	while (argv[i])
 	{
 		value = ft_atoi(argv[i]);

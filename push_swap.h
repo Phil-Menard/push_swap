@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 11:46:54 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 14:56:08 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	sort_b(t_list **b);
 int		verify_params(char **argv);
 int		check_doubles(t_list **lst, t_list *node);
 void	del(void *content);
+void	free_arg(char **arg);
 
 #endif

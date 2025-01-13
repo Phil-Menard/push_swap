@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 11:56:43 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 14:55:54 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void	print_list(t_list *lst, const char *lstname)
 	ft_printf("\n");
 }
 
+void	free_arg(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		free(arg[i]);
+		i++;
+	}
+	free(arg);
+}
+
 void	del(void *content)
 {
 	free(content);
@@ -35,11 +48,11 @@ char	**handle_args(int argc, char **argv)
 	int		i;
 	int		j;
 
+	i = 1;
 	if (argc == 2)
 		arg = ft_split(argv[1], ' ');
 	else
 	{
-		i = 0;
 		while (argv[i])
 			i++;
 		arg = malloc(i * sizeof(char *));
@@ -51,6 +64,7 @@ char	**handle_args(int argc, char **argv)
 			j++;
 			i++;
 		}
+		arg[j] = 0;
 	}
 	return (arg);
 }
