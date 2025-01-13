@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 17:59:39 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 11:46:54 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "ft_printf/ft_printf.h"
 
 void	print_list(t_list *lst, const char *lstname);
+char	**handle_args(int argc, char **argv);
 t_list	*create_list(char **argv);
 t_list	*ft_swap(t_list *lst, const char *lstname);
 t_list	*ft_push(t_list *a, t_list **b, const char *lstname);
@@ -35,6 +36,7 @@ int		find_position(t_list **b, t_list *element);
 int		get_bigger_element(t_list **b);
 void	sort_b(t_list **b);
 int		verify_params(char **argv);
+int		check_doubles(t_list **lst, t_list *node);
 void	del(void *content);
 
 #endif

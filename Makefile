@@ -3,6 +3,7 @@ CFLAGS = -Wall -Werror -Wextra
 DEBUG_FLAGS = -g
 NAME = push_swap
 SRC = push_swap.c \
+	check_errors.c \
 	init_list.c \
 	instructions.c \
 	array_handler.c \

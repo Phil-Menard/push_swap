@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 17:32:40 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 11:56:43 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,35 @@ void	print_list(t_list *lst, const char *lstname)
 	ft_printf("\n");
 }
 
-int	verify_params(char **argv)
-{
-	int		i;
-	int		value;
-	char	*content;
-
-	i = 1;
-	while (argv[i])
-	{
-		value = ft_atoi(argv[i]);
-		content = ft_itoa(value);
-		if (ft_strncmp(argv[i], content, ft_strlen(argv[i])) != 0)
-			return (free(content), (0));
-		free(content);
-		i++;
-	}
-	return (1);
-}
-
-int	check_doubles(t_list **lst, t_list *node)
-{
-	t_list	*current;
-
-	current = *lst;
-	while (current != NULL)
-	{
-		if (*(int *)node->content == *(int *)current->content)
-			return (0);
-		current = current->next;
-	}
-	return (1);
-}
-
 void	del(void *content)
 {
 	free(content);
+}
+
+char	**handle_args(int argc, char **argv)
+{
+	char	**arg;
+	int		i;
+	int		j;
+
+	if (argc == 2)
+		arg = ft_split(argv[1], ' ');
+	else
+	{
+		i = 0;
+		while (argv[i])
+			i++;
+		arg = malloc(i * sizeof(char *));
+		i = 1;
+		j = 0;
+		while (argv[i])
+		{
+			arg[j] = ft_strdup(argv[i]);
+			j++;
+			i++;
+		}
+	}
+	return (arg);
 }
 
 t_list	*create_list(char **argv)
@@ -72,9 +65,9 @@ t_list	*create_list(char **argv)
 	content = malloc(sizeof(int));
 	if (!content)
 		return (NULL);
-	*content = ft_atoi(argv[1]);
+	*content = ft_atoi(argv[0]);
 	lst = ft_lstnew((void *)content);
-	i = 2;
+	i = 1;
 	while (argv[i])
 	{
 		content = malloc(sizeof(int));
