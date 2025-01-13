@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:24:44 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 10:50:25 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 13:41:10 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
 			position = find_position(b, *a);
 			change_order_in_b(b, position);
 		}
-		*a = ft_push(*a, b, "a");
+		*a = ft_push(*a, b, "b");
 		i++;
 	}
 }

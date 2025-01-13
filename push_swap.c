@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 11:57:57 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 13:40:29 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_sorted(t_list **a)
 	return (1);
 }
 
-t_list	*push_swap(t_list **a, t_list **b)
+void	push_swap(t_list **a, t_list **b)
 {
 	int	i;
 	int	*tab;
@@ -49,8 +49,7 @@ t_list	*push_swap(t_list **a, t_list **b)
 	free(tabs_size);
 	sort_b(b);
 	while (ft_lstsize(*b) > 0)
-		*b = ft_push(*b, a, "b");
-	return (*a);
+		*b = ft_push(*b, a, "a");
 }
 
 int	main(int argc, char **argv)
@@ -71,9 +70,9 @@ int	main(int argc, char **argv)
 		if (a == NULL)
 			return (ft_printf("Error\n"), (1));
 		if (!is_sorted(&a))
-			a = push_swap(&a, &b);
-		print_list(a, "a");
-		print_list(b, "b");
+			push_swap(&a, &b);
+		/* print_list(a, "a");
+		print_list(b, "b"); */
 		ft_lstclear(&a, &del);
 		ft_lstclear(&b, &del);
 	}
