@@ -10,7 +10,8 @@ SRC = push_swap.c \
 	optimisation.c \
 	algorithm.c \
 	find_in_list.c \
-	chunks.c
+	chunks.c \
+	instructions_double.c
 
 OBJ = $(SRC:.c=.o)
 

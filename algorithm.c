@@ -6,33 +6,35 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:24:44 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 13:41:10 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:44:33 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_to_top(t_list **a, int *tab)
+void	adjust_lst(t_list **a, t_list **b, int *position, int *element)
 {
-	int	element;
-	int	lst_size;
+	int	lst_size_a;
+	int	lst_size_b;
 
-	lst_size = ft_lstsize(*a);
-	element = find_element_to_push(a, tab);
-	if (element >= (lst_size / 2) + 1)
+	lst_size_a = ft_lstsize(*a);
+	lst_size_b = ft_lstsize(*b);
+	if (*position >= (lst_size_b / 2) + 1 && *element >= (lst_size_a / 2) + 1)
 	{
-		while (element < lst_size)
+		while (*position < lst_size_b && *element < lst_size_a)
 		{
-			*a = ft_reverse(a, *a, "a");
-			element++;
+			ft_reverse_double(a, b);
+			*element += 1;
+			*position += 1;
 		}
 	}
-	else
+	else if (*element < (lst_size_a / 2) + 1 && *position < (lst_size_b / 2) + 1)
 	{
-		while (element > 0)
+		while (*position > 0 && *element > 0)
 		{
-			*a = ft_rotate(a, *a, "a");
-			element--;
+			ft_rotate_double(a, b);
+			*element -= 1;
+			*position -= 1;
 		}
 	}
 }
@@ -46,7 +48,7 @@ void	change_order_in_b(t_list **b, int position)
 	{
 		while (position < lst_size)
 		{
-			*b = ft_reverse(b, *b, "b");
+			*b = ft_reverse(b, *b, "b", 0);
 			position++;
 		}
 	}
@@ -54,9 +56,57 @@ void	change_order_in_b(t_list **b, int position)
 	{
 		while (position > 0)
 		{
-			*b = ft_rotate(b, *b, "b");
+			*b = ft_rotate(b, *b, "b", 0);
 			position--;
 		}
+	}
+}
+
+void	move_to_top(t_list **a, int element)
+{
+	int	lst_size;
+
+	lst_size = ft_lstsize(*a);
+	if (element >= (lst_size / 2) + 1)
+	{
+		while (element < lst_size)
+		{
+			*a = ft_reverse(a, *a, "a", 0);
+			element++;
+		}
+	}
+	else
+	{
+		while (element > 0)
+		{
+			*a = ft_rotate(a, *a, "a", 0);
+			element--;
+		}
+	}
+}
+
+void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
+{
+	int		tab_size;
+	int		i;
+	int		position;
+	int		element;
+
+	tab_size = get_tabsize(tab);
+	i = 0;
+	while (i < tab_size)
+	{
+		element = find_element_to_push(a, tab);
+		if (ft_lstsize(*b) > 1)
+		{
+			position = find_position(b, change_element_to_node(a, element));
+			adjust_lst(a, b, &position, &element);
+		}
+		move_to_top(a, element);
+		if (ft_lstsize(*b) > 1)
+			change_order_in_b(b, position);
+		*a = ft_push(*a, b, "b");
+		i++;
 	}
 }
 
@@ -76,28 +126,6 @@ void	sort_b(t_list **b)
 	}
 	change_order_in_b(b, index);
 }
-
-void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
-{
-	int	tab_size;
-	int	i;
-	int	position;
-
-	tab_size = get_tabsize(tab);
-	i = 0;
-	while (i < tab_size)
-	{
-		move_to_top(a, tab);
-		if (ft_lstsize(*b) > 1)
-		{
-			position = find_position(b, *a);
-			change_order_in_b(b, position);
-		}
-		*a = ft_push(*a, b, "b");
-		i++;
-	}
-}
-
 /* void	sort_a(t_list **a)
 {
 	t_list	*current;

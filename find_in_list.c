@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:30:56 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 16:41:24 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:39:35 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,5 @@ int	find_position(t_list **b, t_list *element)
 		position++;
 		current = current->next;
 	}
-	return (0);
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:08:10 by pmenard           #+#    #+#             */
-/*   Updated: 2024/12/13 15:02:21 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 15:34:10 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_list	*ft_push(t_list *a, t_list **b, const char *lstname)
 	return (second);
 }
 
-t_list	*ft_rotate(t_list **lst, t_list *node, const char *lstname)
+t_list	*ft_rotate(t_list **lst, t_list *node, const char *lstname, int x)
 {
 	t_list	*second;
 
@@ -48,11 +48,14 @@ t_list	*ft_rotate(t_list **lst, t_list *node, const char *lstname)
 	second = node->next;
 	ft_lstadd_back(lst, node);
 	node->next = NULL;
-	ft_printf("r%s\n", lstname);
+	if (x == 0)
+		ft_printf("r%s\n", lstname);
+	else
+		ft_printf("r");
 	return (second);
 }
 
-t_list	*ft_reverse(t_list **lst, t_list *node, const char *lstname)
+t_list	*ft_reverse(t_list **lst, t_list *node, const char *lstname, int x)
 {
 	t_list	*last;
 
@@ -65,6 +68,9 @@ t_list	*ft_reverse(t_list **lst, t_list *node, const char *lstname)
 		node = node->next;
 	node->next = NULL;
 	ft_lstadd_front(lst, last);
-	ft_printf("rr%s\n", lstname);
+	if (x == 0)
+		ft_printf("rr%s\n", lstname);
+	else
+		ft_printf("r");
 	return (last);
 }

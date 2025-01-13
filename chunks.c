@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:58:45 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/10 18:01:49 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:54:19 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	find_chunk_quantity(t_list **a)
 	else if (size <= 50)
 		return (4);
 	else if (size <= 100)
-		return (5);
-	else if (size <= 200)
-		return (6);
-	else if (size <= 300)
 		return (7);
-	else if (size <= 400)
+	else if (size <= 200)
+		return (7);
+	else if (size <= 300)
 		return (8);
-	else if (size <= 450)
-		return (9);
-	else
+	else if (size <= 400)
 		return (10);
+	else if (size <= 450)
+		return (12);
+	else
+		return (16);
 }
 
 int	*set_chunk_quantity(t_list **a, int chunk_quantity)

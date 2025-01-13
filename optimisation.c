@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:02:23 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/09 11:10:01 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:44:16 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ int	get_lowest_element(t_list **a, int tabsize, int *nb_instructions)
 			element = nb_instructions[i];
 	}
 	return (element);
+}
+
+t_list	*change_element_to_node(t_list **a, int element)
+{
+	t_list	*current;
+
+	current = *a;
+	while (element > 0)
+	{
+		current = current->next;
+		element--;
+	}
+	return (current);
 }
 
 int	find_element_to_push(t_list **a, int *tab)

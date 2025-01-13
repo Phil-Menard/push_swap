@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 14:57:02 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/13 16:50:04 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	main(int argc, char **argv)
 		free_arg(arg);
 		if (!is_sorted(&a))
 			push_swap(&a, &b);
-		/* print_list(a, "a");
-		print_list(b, "b"); */
+		print_list(a, "a");
+		print_list(b, "b");
 		ft_lstclear(&a, &del);
 		ft_lstclear(&b, &del);
 	}
