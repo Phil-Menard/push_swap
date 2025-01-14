@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 18:39:51 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/14 11:59:41 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ int		*fill_tab(t_list **a, int *tab, int tab_size);
 void	push_chunk_to_b(t_list **a, t_list **b, int *tab);
 int		find_element_to_push(t_list **a, int *tab);
 int		find_position(t_list **b, t_list *element);
+int		get_smallest_element(t_list **b);
 int		get_bigger_element(t_list **b);
 t_list	*change_element_to_node(t_list **a, int element);
+void	sort_a(t_list **a);
 void	sort_b(t_list **b);
+void	change_order_in_b(t_list **b, int position);
 int		verify_params(char **argv);
 int		check_doubles(t_list **lst, t_list *node);
 void	del(void *content);

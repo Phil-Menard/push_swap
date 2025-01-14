@@ -11,7 +11,8 @@ SRC = push_swap.c \
 	algorithm.c \
 	find_in_list.c \
 	chunks.c \
-	instructions_double.c
+	instructions_double.c \
+	sort_lists.c
 
 OBJ = $(SRC:.c=.o)
 

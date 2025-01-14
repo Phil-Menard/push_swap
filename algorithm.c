@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:24:44 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 18:44:33 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/14 11:58:37 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,30 +109,3 @@ void	push_chunk_to_b(t_list **a, t_list **b, int *tab)
 		i++;
 	}
 }
-
-void	sort_b(t_list **b)
-{
-	t_list	*current;
-	int		bigger;
-	int		index;
-
-	bigger = get_bigger_element(b);
-	current = *b;
-	index = 0;
-	while (*(int *)current->content != bigger)
-	{
-		index++;
-		current = current->next;
-	}
-	change_order_in_b(b, index);
-}
-/* void	sort_a(t_list **a)
-{
-	t_list	*current;
-
-	current = *a;
-	while (current)
-	{
-
-	}
-} */
