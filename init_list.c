@@ -6,12 +6,11 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:47:06 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/13 14:55:54 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:36:21 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	print_list(t_list *lst, const char *lstname)
 {

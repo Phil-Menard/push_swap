@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:24:44 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/14 11:58:37 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:20:13 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	adjust_lst(t_list **a, t_list **b, int *position, int *element)
 			*position += 1;
 		}
 	}
-	else if (*element < (lst_size_a / 2) + 1 && *position < (lst_size_b / 2) + 1)
+	else if (*element < (lst_size_a / 2) + 1
+		&& *position < (lst_size_b / 2) + 1)
 	{
 		while (*position > 0 && *element > 0)
 		{

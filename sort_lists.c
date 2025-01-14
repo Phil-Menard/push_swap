@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 11:58:11 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/14 11:58:41 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/14 17:19:46 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	sort_b(t_list **b)
 	}
 	change_order_in_b(b, index);
 }
+
 void	sort_a(t_list **a)
 {
 	t_list	*first;
