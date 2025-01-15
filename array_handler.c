@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:39:36 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/14 17:19:39 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/15 18:07:10 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,19 @@ int	is_in_tab(int *tab, int value, int i)
 	return (1);
 }
 
-int	*fill_tab(t_list **a, int *tab, int tab_size)
+int	get_last_in_tab(int **all_tabs, int index)
+{
+	int i;
+	int	j;
+	int	res;
+
+	j = index - 1;
+	i = get_tabsize(all_tabs[j]);
+	res = all_tabs[j][i - 1];
+	return (res);
+}
+
+int	*fill_tab(t_list **a, int **tabs, int tab_size, int index)
 {
 	t_list	*current;
 	int		i;
@@ -32,20 +44,23 @@ int	*fill_tab(t_list **a, int *tab, int tab_size)
 	while (i < tab_size)
 	{
 		current = *a;
-		tab[i] = -1;
-		while (is_in_tab(tab, *(int *)current->content, i) == 0)
+		tabs[index][i] = 2147483647;
+		while (is_in_tab(tabs[index], *(int *)current->content, i) == 0)
 			current = current->next;
-		tab[i] = *(int *)current->content;
 		while (current != NULL)
 		{
-			if (*(int *)current->content < tab[i]
-				&& is_in_tab(tab, *(int *)current->content, i) == 1)
-				tab[i] = *(int *)current->content;
+			if (*(int *)current->content < tabs[index][i]
+				&& is_in_tab(tabs[index], *(int *)current->content, i) == 1)
+			{
+				if (index == 0
+					|| *(int *)current->content > get_last_in_tab(tabs, index))
+					tabs[index][i] = *(int *)current->content;
+			}
 			current = current->next;
 		}
 		i++;
 	}
-	return (tab);
+	return (tabs[index]);
 }
 
 int	get_tabsize(int *tab)

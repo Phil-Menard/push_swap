@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:20 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/14 11:59:41 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/15 17:27:26 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		find_chunk_quantity(t_list **a);
 int		*set_chunk_quantity(t_list **a, int chunk_quantity);
 int		get_tabsize(int *tab);
 int		*swap_tab(int *tab, int element);
-int		*fill_tab(t_list **a, int *tab, int tab_size);
+int		get_lstindex(t_list **a, int index_tab);
+int		*fill_tab(t_list **a, int **tabs, int tab_size, int index);
 void	push_chunk_to_b(t_list **a, t_list **b, int *tab);
 int		find_element_to_push(t_list **a, int *tab);
 int		find_position(t_list **b, t_list *element);

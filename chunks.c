@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:58:45 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/15 10:55:38 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:08:51 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,24 @@ int	find_chunk_quantity(t_list **a)
 		return (13);
 }
 
+int	*remove_last_three(int *tabs_size, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = size;
+	while (i < 3)
+	{
+		if (size < 0)
+			size = j;
+		tabs_size[size] -= 1;
+		size--;
+		i++;
+	}
+	return (tabs_size);
+}
+
 int	*set_chunk_quantity(t_list **a, int chunk_quantity)
 {
 	int	*tabs_size;
@@ -58,8 +76,6 @@ int	*set_chunk_quantity(t_list **a, int chunk_quantity)
 			remainder--;
 		}
 	}
-	i = -1;
-	while (++i < 3)
-		tabs_size[i] -= 1;
+	tabs_size = remove_last_three(tabs_size, (chunk_quantity - 1));
 	return (tabs_size);
 }
