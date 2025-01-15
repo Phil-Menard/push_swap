@@ -6,7 +6,7 @@
 /*   By: pmenard <pmenard@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 10:54:00 by pmenard           #+#    #+#             */
-/*   Updated: 2025/01/14 16:30:08 by pmenard          ###   ########.fr       */
+/*   Updated: 2025/01/15 10:57:22 by pmenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	push_swap(t_list **a, t_list **b)
 	free(tabs_size);
 	if (!is_sorted(a))
 		sort_a(a);
-	sort_b(b);
+	if (ft_lstsize(*b) > 1)
+		sort_b(b);
 	while (ft_lstsize(*b) > 0)
 		*b = ft_push(*b, a, "a");
 }
@@ -62,7 +63,7 @@ int	main(int argc, char **argv)
 
 	b = NULL;
 	if (argc == 1)
-		return (ft_printf("Error\n"), (1));
+		return (1);
 	else
 	{
 		arg = handle_args(argc, argv);
